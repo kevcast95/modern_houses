@@ -8,7 +8,13 @@ function Layout({ children }) {
   return (
     <article className='layout'>
       <NavBar />
-      <div className="layout-body">{children}</div>
+      <div className="layout-body">
+        <div className='layout-texts'>
+          <h2>Lista de Casas</h2>
+          <p>Lista de casas en San Francisco</p>
+        </div>
+        {children}
+      </div>
     </article>
   )
 }

@@ -1,3 +1,4 @@
+@import '../../Variables.scss';
 .layout {
     width: 100%;
     min-width: 395px;
@@ -11,8 +12,18 @@
         width: 100%;
         height: calc(100vh - 130px);
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
+    }
+    &-texts {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    &-texts > p {
+        font-family: $font-family;
+        color: $grey-color;
+        margin-top: 10px;
     }
 }
 

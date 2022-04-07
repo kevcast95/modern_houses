@@ -2,7 +2,7 @@ import React from 'react';
 import { Routes, Route, BrowserRouter } from 'react-router-dom'
 
 import Layout from './components/Layout';
-import CityList from './pages/CityList'
+import HousesList from './pages/HousesList'
 import MapView from './pages/MapView'
 
 
@@ -14,7 +14,7 @@ function RoutesList() {
                     <Route path="/" element={<MapView />} />
                 </Routes>
                 <Routes>
-                    <Route path="/cities" element={<CityList />} />
+                    <Route path="/cities" element={<HousesList />} />
                 </Routes>
             </Layout>
         </BrowserRouter>

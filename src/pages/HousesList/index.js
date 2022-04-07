@@ -1,11 +1,11 @@
 import React from 'react'
 // import PropTypes from 'prop-types'
 
-import './CityList.scss'
+import './HousesList.scss'
 
-function CityList() {
+function HousesList() {
   return (
-    <section className='city-list'>
+    <section className='houses-list'>
     </section>
   )
 }
@@ -14,4 +14,4 @@ function CityList() {
   children: PropTypes.element.isRequired,
 } */
 
-export default CityList
+export default HousesList
