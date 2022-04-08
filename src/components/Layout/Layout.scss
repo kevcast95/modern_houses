@@ -33,10 +33,16 @@
         flex-direction: row;
         &-body {
             width: 100%;
-            height: 100%;
+            height: calc(100vh - 64px);
             display: flex;
-            justify-content: center;
-            align-items: center;
+            justify-content: start;
+            align-items: flex-start;
+        }
+        &-texts {
+            width: 100%;
+            border-bottom: solid 1px $grey-color;
+            text-align: start;
+            margin-bottom: 0;
         }
     }
     
