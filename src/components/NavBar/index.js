@@ -7,7 +7,6 @@ import './NavBar.scss'
 
 function NavBar() {
     const location = useLocation()
-    console.log(location);
     const navigate = useNavigate()
     const [tabSelected, setTabSelected] = useState(0)
     const icons = ['location','layer','menu']
@@ -40,11 +39,11 @@ function NavBar() {
             <ul className='nav-bar_menu'>
                 {
                     icons.map((opt, index) => (
-                        <li onClick={() => handleNavigation(index)}>
+                        <li onClick={() => handleNavigation(index)} key={index} >
                            <span
                              className={tabSelected === index ?
                                 'nav-bar_items nav-bar_selected': 'nav-bar_items'} 
-                                key={index} 
+                                
                             >
                                 <Icon
                                     item={opt}

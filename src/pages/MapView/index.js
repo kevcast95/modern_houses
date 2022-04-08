@@ -33,7 +33,7 @@ function Map({
         return content
     }
     useEffect(() => {
-        if(!listToMap) dispatch(setLoading())
+        if(listToMap.length === 0) dispatch(setLoading())
         dispatch(GetHousesList(dispatch))
     }, [])
 
@@ -70,7 +70,7 @@ function Map({
     )
 }
 Map.propTypes = {
-    listToMap: PropTypes.object.isRequired,
+    listToMap: PropTypes.array.isRequired,
     isLoading: PropTypes.bool.isRequired,
 }
 

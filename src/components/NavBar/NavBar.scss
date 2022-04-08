@@ -19,6 +19,7 @@
         & > li {
             list-style: none;
             position: relative;
+            cursor: pointer;
         }
         & > li:nth-child(1)::after {
             content: '';
