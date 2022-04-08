@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/modern_houses/static/css/main.b4d58e30.css",
+    "main.css": "/modern_houses/static/css/main.a5d53185.css",
     "main.js": "/modern_houses/static/js/main.a944f755.js",
     "static/js/787.b1cd746c.chunk.js": "/modern_houses/static/js/787.b1cd746c.chunk.js",
     "static/media/spinner.gif": "/modern_houses/static/media/spinner.288452cb0cd009e1a375.gif",
@@ -9,12 +9,12 @@
     "static/media/location.svg": "/modern_houses/static/media/location.6959f003c1ca50bec2ae6613a31772f9.svg",
     "index.html": "/modern_houses/index.html",
     "static/media/ham-menu.svg": "/modern_houses/static/media/ham-menu.19fb64e1e61acba7091499ecd478a55f.svg",
-    "main.b4d58e30.css.map": "/modern_houses/static/css/main.b4d58e30.css.map",
+    "main.a5d53185.css.map": "/modern_houses/static/css/main.a5d53185.css.map",
     "main.a944f755.js.map": "/modern_houses/static/js/main.a944f755.js.map",
     "787.b1cd746c.chunk.js.map": "/modern_houses/static/js/787.b1cd746c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b4d58e30.css",
+    "static/css/main.a5d53185.css",
     "static/js/main.a944f755.js"
   ]
 }
