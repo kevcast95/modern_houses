@@ -32,7 +32,7 @@
         content: '';
         position: absolute;
         left: 40px;
-        width: 68vw;
+        width: calc(68vw - 15px);
         min-width: 260px;
         height: 4px;
         background-color: #000000;

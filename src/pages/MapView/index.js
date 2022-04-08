@@ -1,56 +1,32 @@
-import React, { useState, useEffect } from "react"
+import React, { useEffect } from "react"
 import { connect, useDispatch } from 'react-redux'
 import PropTypes from 'prop-types'
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet"
-import { getHouses } from '../../connection/housesApi';
+import { GetHousesList, setLoading } from '../../redux/actions/houseAction'
 
 import "leaflet/dist/leaflet.css"
 import "./MapView.scss"
 import Loader from "../../components/Loader";
 
 function Map({ 
-    className,
     listToMap,
     isLoading, }) {
-    const [houses, SetHouses] = useState([])
-    console.log(listToMap,
-        isLoading,);
-    const center = houses[0]?.location || { lat: 11.10563541, lng: -74.80849168 }
-    const [loading, setLoading] = useState(true)
-
-    const markers = [{ lat: 11.10563541, lng: -74.80849168 }, { lat: 11.01563541, lng: -74.83849168 }, { lat: 11.01563541, lng: -74.63849168 }]
+    const dispatch = useDispatch()
+    const center =  { lat: "37.78931819999999", lng: "-122.4542534" }
     const cityNum = (num) => {
         const content = L.divIcon({
-            className: "custom-popup",
-            html: `<h3>${num}</h3>`,
+            className: 'leaflet-container_city-num',
+            html: `<h4>${num}</h4>`,
         });
         return content
     }
-    console.log(houses);
     useEffect(() => {
-        setTimeout(() => {
-            const housesList = getHouses();
-            housesList.then(res => {
-                const extractHouses = Object.values(res.data)
-                const allHouses = []
-                for (let i = 0; i < extractHouses.length; i++) {
-                    const group = extractHouses[i]
-                    for (let j = 0; j < group.length; j++) {
-                        allHouses.push(group[j])
-
-                    }
-                }
-                SetHouses(allHouses)
-            })
-                .catch(error =>
-                    alert('Upps, looks like we dont have houses to show! Please try later'));
-
-            setLoading(false)
-        }, 600)
+        dispatch(setLoading())
+        dispatch(GetHousesList(dispatch))
     }, [])
 
-    if (loading) {
+    if (isLoading) {
         return <Loader />
     }
 
@@ -62,11 +38,11 @@ function Map({
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
                 {
-                    markers.map((marker, indx) => {
+                    listToMap.map((marker, indx) => {
                         return (
-                            <Marker key={indx} position={marker} icon={cityNum(marker.lat)}>
+                            <Marker key={indx} position={marker.location} icon={cityNum(marker.number)}>
                                 <Popup>
-                                    A pretty CSS3 popup. <br /> Easily customizable.
+                                    {marker.name_translations.es}
                                 </Popup>
 
                             </Marker>
@@ -82,7 +58,8 @@ function Map({
 Map.propTypes = {
     listToMap: PropTypes.object.isRequired,
     isLoading: PropTypes.bool.isRequired,
-  }
+}
+
 function mapStateToProps({ house }) {
     return {
         listToMap: house.listToMap,

@@ -1,8 +1,9 @@
-/* eslint default-param-last: off */
+
 import {
     GET_HOUSE_LIST,
     LIST_TO_MAP,
-  } from '../contants'
+    IS_LOADING,
+} from '../contants'
   
   export const initialState = {
     housesList: [],
@@ -26,6 +27,12 @@ import {
           ...state,
           listToMap: payload,
           loading: false
+        }
+      }
+      case IS_LOADING: {
+        return {
+          ...state,
+          loading: true
         }
       }
       default:
