@@ -8,7 +8,7 @@ import MapView from './pages/MapView'
 
 function RoutesList() {
     return(
-        <BrowserRouter>
+        <BrowserRouter  basename={process.env.PUBLIC_URL}>
             <Layout>
                 <Routes>
                     <Route path="/" element={<MapView />} />
