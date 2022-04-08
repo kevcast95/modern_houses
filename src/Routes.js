@@ -14,7 +14,10 @@ function RoutesList() {
                     <Route path="/" element={<MapView />} />
                 </Routes>
                 <Routes>
-                    <Route path="/cities" element={<HousesList />} />
+                    <Route path="/houses_list" element={<HousesList />} />
+                </Routes>
+                <Routes>
+                    <Route path="/:id/house_detail" element={<MapView />} />
                 </Routes>
             </Layout>
         </BrowserRouter>

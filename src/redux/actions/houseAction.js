@@ -37,7 +37,6 @@ export const GetHousesList = () => async (dispatch) =>  {
             const toList = res.data
             dispatch(setToListView(toList))
             dispatch(setToMapView(toMap))
-            console.log('actoon allHouses', toMap);
         })
         .catch(error =>
             alert('Upps, looks like we dont have houses to show! Please try later'));

@@ -1,5 +1,6 @@
 import React, { useEffect } from "react"
 import { connect, useDispatch } from 'react-redux'
+import { useParams } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet"
@@ -12,17 +13,27 @@ import Loader from "../../components/Loader";
 function Map({ 
     listToMap,
     isLoading, }) {
+    const params = useParams()
+    const houseId = parseInt(params.id)
     const dispatch = useDispatch()
-    const center =  { lat: "37.78931819999999", lng: "-122.4542534" }
-    const cityNum = (num) => {
+    const houseDetail = houseId ?
+        listToMap.filter((house) => house.id === houseId) : null
+    const center = houseDetail? houseDetail[0]?.location : { lat: "37.78931819999999", lng: "-122.4542534" }
+    const cityNum = (num, id) => {
+        let markerStyle = ''
+        if (houseDetail && (houseId === id)) {
+            markerStyle = 'leaflet-container_selected'
+        }else {
+            markerStyle = 'leaflet-container_city-num'
+        }
         const content = L.divIcon({
-            className: 'leaflet-container_city-num',
+            className: markerStyle,
             html: `<h4>${num}</h4>`,
         });
         return content
     }
     useEffect(() => {
-        dispatch(setLoading())
+        if(!listToMap) dispatch(setLoading())
         dispatch(GetHousesList(dispatch))
     }, [])
 
@@ -40,7 +51,10 @@ function Map({
                 {
                     listToMap.map((marker, indx) => {
                         return (
-                            <Marker key={indx} position={marker.location} icon={cityNum(marker.number)}>
+                            <Marker 
+                                key={indx} position={marker.location} 
+                                icon={cityNum(marker.number, marker.id)}
+                            >
                                 <Popup>
                                     {marker.name_translations.es}
                                 </Popup>
@@ -65,6 +79,6 @@ function mapStateToProps({ house }) {
         listToMap: house.listToMap,
         isLoading: house.loading,
     }
-  }
+}
 
 export default  connect(mapStateToProps)(Map)
