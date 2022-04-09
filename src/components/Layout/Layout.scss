@@ -33,7 +33,7 @@
         flex-direction: row;
         &-body {
             width: 100%;
-            height: calc(100vh - 44px);
+            height: calc(100vh - 32px);
             display: flex;
             justify-content: start;
             align-items: flex-start;
@@ -42,7 +42,7 @@
             width: 100%;
             border-bottom: solid 1px $soft-grey-color;
             text-align: start;
-            padding-bottom: 10px;
+            padding-bottom: 16px;
             margin-bottom: 0;
         }
     }
