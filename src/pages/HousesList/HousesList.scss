@@ -5,7 +5,7 @@
     height: calc(100vh - 130px);
     overflow-y: auto;
     &_houses-contianier {
-        width: 90%;
+        width: 80%;
         padding: 10px;
         margin: 0 auto;
     }
@@ -19,6 +19,7 @@
     }
     &_house-card {
         display: flex;
+        justify-content: space-between;
         align-items: center;
         margin: 20px 5px 20px 20px;
         & > img {
@@ -44,10 +45,15 @@
 
 @media (min-width: 650px) {
     .houses-list {
+        &_houses-contianier {
+            width: 70%;
+            margin: 85px auto 0px;
+        }
         &_house-card {
             & > img {
                 width: 30%;
-                min-width: 114px;
+                min-width: 135px;
+                max-width: 265px;
                 height: 130px;
                 padding-right: 10px;
             }
